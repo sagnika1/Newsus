@@ -10,8 +10,8 @@ const NewsItem = (props) => {
                 <br/>
                 <br/>
                 <h1 style={{marginLeft:"10rem"}}>Newsus</h1>
-                <p style={{marginLeft:"10rem"}}>A News Website developed by Tuhin Subhra Hazra</p>
-                <a style={{marginLeft:"10rem"}} href="https://tuhin-subhra-hazra.onrender.com/">Website link: https://tuhin-subhra-hazra.onrender.com/</a>
+                <p style={{marginLeft:"10rem"}}>A News Website developed by Sagnika Panda</p>
+                {/* <a style={{marginLeft:"10rem"}} href="https://tuhin-subhra-hazra.onrender.com/">Website link: https://tuhin-subhra-hazra.onrender.com/</a> */}
 
             </div>
         </>

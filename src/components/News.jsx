@@ -4,7 +4,8 @@ import Spinner from "./Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const News = (props) => {
-    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
+    // let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=";
+    let url = "https://api.mediastack.com/v1/news?countries=in&&access_key=";
     const pageSize = 20;
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -23,13 +24,13 @@ const News = (props) => {
     const fetchMoreData = async () => {
         props.changeProgress(70);
         setLoading(true);
-        url = await url + props.apiKey + "&page=" + page + "&category=" + props.category + "&pageSize=" + pageSize;
+        url = await url + props.apiKey + "&offset=" + page + "&categories=" + props.category + "&limit=" + pageSize;
         let data = await fetch(url);
         props.changeProgress(80);
         let parseData = await data.json();
         props.changeProgress(90);
 
-        setArticles(articles.concat(parseData.articles));
+        setArticles(articles.concat(parseData.data));
         setTotalResult(parseData.totalResults);
         setLoading(false);
         props.changeProgress(100);
@@ -51,7 +52,7 @@ const News = (props) => {
                         return (<div key={e.url} className="col-md-6 com-sm-12 col-lg-6">
                             <NewsItem title={e.title != null ? e.title : "News"}
                                 description={e.description != null ? e.description : ""}
-                                imgUrl={e.urlToImage != null ? e.urlToImage : ""}
+                                imgUrl={e.image != null ? e.image : ""}
                                 url={e.url}
                                 publishDate={e.publishedAt != null ? new Date().toUTCString(e.publishedAt) : "NULL"}
                                 publisher={e.author != null ? e.author : "NULL"} />
