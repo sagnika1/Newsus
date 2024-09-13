@@ -31,7 +31,7 @@ const News = (props) => {
         props.changeProgress(90);
 
         setArticles(articles.concat(parseData.data));
-        setTotalResult(parseData.totalResults);
+        setTotalResult(parseData.pagination.total);
         setLoading(false);
         props.changeProgress(100);
         setPage(page + 1);
